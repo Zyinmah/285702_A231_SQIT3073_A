@@ -45,7 +45,7 @@ def calculate_loan():
         # Append the loan details dictionary to the list
         loan_calculation.append(loan_details)
         
-        print(f"Monthly Instalment: RM {monthly_installment:.2f}")
+        print(f"Monthly Installment: RM {monthly_installment:.2f}")
         print(f"Total Payable     : RM {total_payable:.2f}")
         print(f"DSR               : {dsr:.2f}%"+"- "+str(eligibility))
         
