@@ -10,19 +10,21 @@ dsr_threshold=70
 
 #Function to calculate a new loan
 def calculate_loan():
-    applicant_monthly_income=float(input("Enter applicant monthly income: RM "))
-    principal_loan_amount=float(input("Enter principal loan amount: RM "))
-    annual_interest_rate=float(input("Enter annual interest rate(in %): "))
-    loan_term=int(input("Enter loan term(in years): "))
+    
+    applicant_monthly_income=float(input("Enter applicant monthly income   : RM "))
+    principal_loan_amount=float(input("Enter principal loan amount      : RM "))
+    annual_interest_rate=float(input("Enter annual interest rate(in %) : "))
+    loan_term=int(input("Enter loan term(in years)        : "))
+    house_loan=float(input("Enter house loan                 : RM "))
     other_financial_commitments=float(input("Enter other financial commitments: RM "))
     print()
-    if principal_loan_amount<=0 or annual_interest_rate<=0 or loan_term<=0 or applicant_monthly_income<=0 or other_financial_commitments<0:
+    if principal_loan_amount<=0 or annual_interest_rate<=0 or loan_term<=0 or applicant_monthly_income<=0 :
         print("All values must be positive. Please enter valid inputs")
         
     else:
         monthly_installment=float(calculate_monthly_installment(annual_interest_rate,loan_term,principal_loan_amount))
         total_payable=float(calculate_total_payable(loan_term,monthly_installment))
-        dsr=float(calculate_DSR([monthly_installment,other_financial_commitments],applicant_monthly_income))
+        dsr=float(calculate_DSR([monthly_installment,other_financial_commitments,house_loan],applicant_monthly_income))
         
         if dsr<=dsr_threshold:
             eligibility=str("Eligible ")           
@@ -44,8 +46,8 @@ def calculate_loan():
         loan_calculation.append(loan_details)
         
         print(f"Monthly Instalment: RM {monthly_installment:.2f}")
-        print(f"Total Payable: RM {total_payable:.2f}")
-        print(f"DSR: {dsr:.2f}%"+"- "+str(eligibility))
+        print(f"Total Payable     : RM {total_payable:.2f}")
+        print(f"DSR               : {dsr:.2f}%"+"- "+str(eligibility))
         
 #Function to calculate the monthly installment based on loan details
 def calculate_monthly_installment(annual_interest_rate,loan_term,principal_loan_amount):
@@ -71,13 +73,13 @@ def display_all_previous_loan_calculations():
         print("\nNo previous loan calculations.")
     else:
         for i, loan_details in enumerate(loan_calculation):
-            print(f"Loan Calculation {i + 1}:")
-            print(f"Principal Loan Amount: RM {loan_details['Principal Loan Amount']:.2f}")
-            print(f"Annual Interest Rate: {loan_details['Annual Interest Rate']:.2f}%")
-            print(f"Loan Term: {loan_details['Loan Term']}")
-            print(f"Monthly Installment: RM {loan_details['Monthly Installment']:.2f}")
-            print(f"Total Payable: RM {loan_details['Total Payable']:.2f}")
-            print(f"DSR: {loan_details['DSR']:.2f}% - {loan_details['Eligibility']}")
+            print(f"Loan Calculation {i + 1}")
+            print(f"Principal Loan Amount   : RM {loan_details['Principal Loan Amount']:.2f}")
+            print(f"Annual Interest Rate    : {loan_details['Annual Interest Rate']:.2f}%")
+            print(f"Loan Term               : {loan_details['Loan Term']}")
+            print(f"Monthly Installment     : RM {loan_details['Monthly Installment']:.2f}")
+            print(f"Total Payable           : RM {loan_details['Total Payable']:.2f}")
+            print(f"DSR                     : {loan_details['DSR']:.2f}% - {loan_details['Eligibility']}")
             print()
 
 # Function to modify the DSR threshold
@@ -114,7 +116,7 @@ def main():
         print("4. Delete a Previous Calculation")
         print("5. Exit")
 
-        choice=int(input("Enter your choice: "))
+        choice=int(input("Enter your choice\t\t : "))
 
         if choice==1:
             calculate_loan()
