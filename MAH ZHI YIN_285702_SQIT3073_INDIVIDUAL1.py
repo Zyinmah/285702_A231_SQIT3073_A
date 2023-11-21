@@ -99,6 +99,7 @@ def display_all_previous_loan_calculations():
 
             if loan_details['DSR']<=dsr_threshold:
                 print(f"DSR                     : {loan_details['DSR']:.2f}% - Eligible")
+                print("------------------------------------------------------------------------")
             else:
                  print(f"DSR                     : {loan_details['DSR']:.2f}% - Not Eligible")
                  print("------------------------------------------------------------------------")
