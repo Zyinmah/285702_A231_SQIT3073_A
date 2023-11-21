@@ -23,17 +23,16 @@ def calculate_loan():
                 principal_loan_amount=float(input("Enter principal loan amount                             : RM "))
                 annual_interest_rate=float(input("Enter annual interest rate(in %)                        : "))
                 loan_term=int(input("Enter loan term(in years)                               : "))
-                house_loan=float(input("Enter monthly housing loan                              : RM "))
                 other_financial_commitments=float(input("Enter other monthly financial commitments               : RM "))
                 print()
 
-                if principal_loan_amount<=0 or annual_interest_rate<=0 or loan_term<=0 or applicant_monthly_income<=0 or house_loan<0 or other_financial_commitments<0:
+                if principal_loan_amount<=0 or annual_interest_rate<=0 or loan_term<=0 or applicant_monthly_income<=0 or  other_financial_commitments<0:
                     print()
                     print("Input error: All values must be positive. Please enter all valid input again.")                    
                 else:
                     monthly_installment=float(calculate_monthly_installment(annual_interest_rate,loan_term,principal_loan_amount))
                     total_payable=float(calculate_total_payable(loan_term,monthly_installment))
-                    dsr=float(calculate_DSR([monthly_installment,other_financial_commitments,house_loan],applicant_monthly_income))
+                    dsr=float(calculate_DSR([monthly_installment,other_financial_commitments],applicant_monthly_income))
                     
                     if dsr<=dsr_threshold:
                         eligibility=str("Eligible ")           
