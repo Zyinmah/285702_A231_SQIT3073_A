@@ -1,3 +1,8 @@
+#SQIT3073 Group Assignment 1
+#Title:  Commercial Banks and Islamic Banks: Impaired Loans and Impairment Provisions
+#MAH ZHI YIN 285702
+#CHEOK LI EN 285942
+
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
